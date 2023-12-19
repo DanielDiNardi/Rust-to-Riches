@@ -13,7 +13,7 @@ public static class GroundProceduralGenerator
 
         for (int i = 0; i < walkLength; i++)
         {
-            var newPosition = previousPosition + Direction2D.GetRandomCardinalDirection();
+            var newPosition = previousPosition + Direction3D.GetRandomCardinalDirection();
             path.Add(newPosition);
             previousPosition = newPosition;
         }
@@ -21,7 +21,7 @@ public static class GroundProceduralGenerator
     }
 }
 
-public static class Direction2D
+public static class Direction3D
 {
     public static List<Vector3Int> cardinalDirectionsList = new List<Vector3Int>
     {
