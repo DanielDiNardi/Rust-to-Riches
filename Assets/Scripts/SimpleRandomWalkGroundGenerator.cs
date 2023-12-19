@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class SimpleRandomWalkGroundGenerator : MonoBehaviour
 {
     [SerializeField]
-    protected Vector2Int startPosition = Vector2Int.zero;
+    protected Vector3Int startPosition = Vector3Int.zero;
 
     [SerializeField]
     private int iterations = 10;
@@ -16,19 +16,19 @@ public class SimpleRandomWalkGroundGenerator : MonoBehaviour
     [SerializeField]
     public bool startRandomlyEachIteration = true;
 
+    [SerializeField]
+    private TilemapVisualizer tilemapVisualizer;
+
     public void RunProceduralGeneration()
     {
-        HashSet<Vector2Int> floorPositions = RunRandomWalk();
-        foreach (var position in floorPositions)
-        {
-            Debug.Log(position);
-        }
+        HashSet<Vector3Int> floorPositions = RunRandomWalk();
+        tilemapVisualizer.PaintFloorTiles(floorPositions);
     }
 
-    protected HashSet<Vector2Int> RunRandomWalk()
+    protected HashSet<Vector3Int> RunRandomWalk()
     {
         var currentPosition = startPosition;
-        HashSet<Vector2Int> floorPositions = new HashSet<Vector2Int>();
+        HashSet<Vector3Int> floorPositions = new HashSet<Vector3Int>();
         for (int i = 0; i < iterations; i++)
         {
             var path = GroundProceduralGenerator.SimpleRandomWalk(currentPosition, walkLength);
