@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class GroundProceduralGenerator
+public static class ResourceProceduralGenerator
 {
     public static HashSet<Vector3Int> SimpleRandomWalk(Vector3Int startPosition, int walkLength)
     {
