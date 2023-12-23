@@ -14,8 +14,11 @@ public static class GroundProceduralGenerator
         for (int i = 0; i < walkLength; i++)
         {
             var newPosition = previousPosition + Direction3D.GetRandomCardinalDirection();
-            path.Add(newPosition);
-            previousPosition = newPosition;
+            if (!(path.Contains(newPosition)))
+            {
+                path.Add(newPosition);
+                previousPosition = newPosition;
+            }
         }
         return path;
     }

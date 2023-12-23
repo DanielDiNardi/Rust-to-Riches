@@ -18,7 +18,7 @@ public static class ResourceProceduralGenerator
         for (int i = 0; i < walkLength; i++)
         {
             var newPosition = previousPosition + Direction3D.GetRandomCardinalDirection();
-            if (floorPositions.Contains(newPosition))
+            if (floorPositions.Contains(newPosition) && !(path.Contains(newPosition)))
             {
                 path.Add(newPosition);
                 previousPosition = newPosition;
