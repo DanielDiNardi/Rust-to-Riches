@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class SimpleRandomWalkGroundGenerator : MonoBehaviour
+public class GroundRandomWalkIterator : MonoBehaviour
 {
     [SerializeField]
     protected Vector3Int startPosition = Vector3Int.zero;
@@ -17,7 +17,7 @@ public class SimpleRandomWalkGroundGenerator : MonoBehaviour
     public bool startRandomlyEachIteration = true;
 
     [SerializeField]
-    private TilemapVisualizer tilemapVisualizer;
+    private GroundTilemapVisualizer tilemapVisualizer;
 
     public static HashSet<Vector3Int> floorPositions = new HashSet<Vector3Int>();
 

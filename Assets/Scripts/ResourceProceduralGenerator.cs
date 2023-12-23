@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class ResourceProceduralGenerator
 {
-    public static HashSet<Vector3Int> FloorRandomWalk(
+    public static HashSet<Vector3Int> GroundRandomWalk(
         Vector3Int startPosition,
         int walkLength,
         HashSet<Vector3Int> floorPositions

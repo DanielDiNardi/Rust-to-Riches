@@ -1055,11 +1055,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7af4ef671322c4e9327e23a2846daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resources:
+  - Sphere
+  - Capsule
+  - Cylinder
   startPosition: {x: 0, y: 0, z: 0}
   iterations: 1
   walkLength: 5
   startRandomlyEachIteration: 1
-  tilemapVisualizer: {fileID: 1954891471}
+  tilemapVisualizer: {fileID: 1954891473}
 --- !u!1 &1348019127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,7 +1443,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1954891472}
-  - component: {fileID: 1954891471}
+  - component: {fileID: 1954891473}
   m_Layer: 0
   m_Name: ResourceTileVisualizer
   m_TagString: Untagged
@@ -1447,20 +1451,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1954891471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954891470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03c47939c9b41a54eb99690c39bc03bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floorTilemap: {fileID: 2090754758}
-  floorTile: {fileID: 11400000, guid: 9122228de1dfaf24a99548f0604629b8, type: 2}
 --- !u!4 &1954891472
 Transform:
   m_ObjectHideFlags: 0
@@ -1476,6 +1466,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1954891473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954891470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4c20ea14a71e304a9034fd6562529a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceTilemap: {fileID: 2090754758}
+  resourceTiles:
+  - {fileID: 11400000, guid: 9122228de1dfaf24a99548f0604629b8, type: 2}
+  - {fileID: 11400000, guid: 371a1ac9aabed044daacf2b7b97b1d13, type: 2}
+  - {fileID: 11400000, guid: c31f57fb629240441b2ae65118bf8200, type: 2}
 --- !u!1 &2090754757
 GameObject:
   m_ObjectHideFlags: 0

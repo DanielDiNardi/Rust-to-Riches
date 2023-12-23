@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class TilemapVisualizer : MonoBehaviour
+public class GroundTilemapVisualizer : MonoBehaviour
 {
     [SerializeField]
     private Tilemap floorTilemap;

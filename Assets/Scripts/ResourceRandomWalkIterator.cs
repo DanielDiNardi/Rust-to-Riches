@@ -4,8 +4,16 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class ModifiedRandomWalkResourceGenerator : MonoBehaviour
+public class ResourceRandomWalkIterator : MonoBehaviour
 {
+    [SerializeField]
+    private List<string> resources = new List<string>
+    {
+        "Sphere",
+        "Capsule",
+        "Cylinder"
+    };
+
     [SerializeField]
     protected Vector3Int startPosition = Vector3Int.zero;
 
@@ -17,29 +25,32 @@ public class ModifiedRandomWalkResourceGenerator : MonoBehaviour
     public bool startRandomlyEachIteration = true;
 
     [SerializeField]
-    private TilemapVisualizer tilemapVisualizer;
+    private ResourceTilemapVisualizer tilemapVisualizer;
 
     [SerializeField]
     private HashSet<Vector3Int> resourcePositions = new HashSet<Vector3Int>();
 
     public void RunProceduralGeneration()
     {
-        HashSet<Vector3Int> resourcePositions = RunRandomWalk();
-        tilemapVisualizer.PaintFloorTiles(resourcePositions);
+        foreach (var resource in resources)
+        {
+            HashSet<Vector3Int> resourcePositions = RunRandomWalk();
+            tilemapVisualizer.PaintResourceTiles(resourcePositions, resource);
+        }
     }
 
     protected HashSet<Vector3Int> RunRandomWalk()
     {
-        var floorPositions = SimpleRandomWalkGroundGenerator.floorPositions;
+        var floorPositions = GroundRandomWalkIterator.floorPositions;
         startPosition = floorPositions.ElementAt(Random.Range(0, floorPositions.Count));
         var currentPosition = startPosition;
         HashSet<Vector3Int> resourcePositions = new HashSet<Vector3Int>();
         for (int i = 0; i < iterations; i++)
         {
-            var path = ResourceProceduralGenerator.FloorRandomWalk(
+            var path = ResourceProceduralGenerator.GroundRandomWalk(
                 currentPosition,
                 walkLength,
-                SimpleRandomWalkGroundGenerator.floorPositions
+                floorPositions
             );
             resourcePositions.UnionWith(path);
             
