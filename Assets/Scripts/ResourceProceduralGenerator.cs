@@ -4,7 +4,11 @@ using UnityEngine;
 
 public static class ResourceProceduralGenerator
 {
-    public static HashSet<Vector3Int> SimpleRandomWalk(Vector3Int startPosition, int walkLength)
+    public static HashSet<Vector3Int> FloorRandomWalk(
+        Vector3Int startPosition,
+        int walkLength,
+        HashSet<Vector3Int> floorPositions
+    )
     {
         HashSet<Vector3Int> path = new HashSet<Vector3Int>();
 
@@ -14,8 +18,12 @@ public static class ResourceProceduralGenerator
         for (int i = 0; i < walkLength; i++)
         {
             var newPosition = previousPosition + Direction3D.GetRandomCardinalDirection();
-            path.Add(newPosition);
-            previousPosition = newPosition;
+            if (floorPositions.Contains(newPosition))
+            {
+                path.Add(newPosition);
+                previousPosition = newPosition;
+            }
+            
         }
         return path;
     }
