@@ -33,7 +33,7 @@ public class GroundRandomWalkIterator : MonoBehaviour
         HashSet<Vector3Int> floorPositions = new HashSet<Vector3Int>();
         for (int i = 0; i < iterations; i++)
         {
-            var path = GroundProceduralGenerator.SimpleRandomWalk(currentPosition, walkLength);
+            var path = GroundRandomWalk(currentPosition, walkLength);
             floorPositions.UnionWith(path);
             if (startRandomlyEachIteration)
             {
@@ -41,5 +41,26 @@ public class GroundRandomWalkIterator : MonoBehaviour
             }
         }
         return floorPositions;
+    }
+
+    public static HashSet<Vector3Int> GroundRandomWalk(Vector3Int startPosition, int walkLength)
+    {
+        HashSet<Vector3Int> path = new HashSet<Vector3Int>();
+
+        path.Add(startPosition);
+        GroundPositionManager.AddPosition(startPosition);
+        var previousPosition = startPosition;
+
+        for (int i = 0; i < walkLength; i++)
+        {
+            var newPosition = previousPosition + Direction3D.GetRandomCardinalDirection();
+            if (!GroundPositionManager.IsPositionInList(newPosition))
+            {
+                path.Add(newPosition);
+                GroundPositionManager.AddPosition(newPosition);
+                previousPosition = newPosition;
+            }
+        }
+        return path;
     }
 }

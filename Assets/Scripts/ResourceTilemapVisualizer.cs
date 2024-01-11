@@ -28,14 +28,12 @@ public class ResourceTilemapVisualizer : MonoBehaviour
     {
         foreach (var position in positions)
         {
-            Debug.Log(tile);
             PaintSingleTile(tilemap, tile, position);
         }
     }
 
     private void PaintSingleTile(Tilemap tilemap, TileBase tile, Vector3Int position)
     {
-        Debug.Log(tile);
         var tilePosition = tilemap.WorldToCell(position);
         tilemap.SetTile(tilePosition, tile);
     }
