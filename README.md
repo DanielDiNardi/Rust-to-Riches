@@ -1,1 +1,8 @@
-# Resource-Management-Game
+# Rust to Riches
+
+## Description:
+This game is designed as a resource management simulation, offering players the opportunity to engage in various activities centered around the collection, refinement, and sale of raw materials. The primary mechanics involve establishing factories to process these materials, with the ultimate goal of generating revenue by selling the refined products to in-game companies. Additionally, players can channel the scrap produced by factories to a research station, where it can be utilized to unlock upgrades and new technologies.
+
+The factories in the game come with an interesting twist—players must manage their maintenance levels. Each factory can operate at either a low or high maintenance setting, with each option incurring a different cost. Opting for low maintenance results in reduced operational costs but comes at the expense of the factory's health, decreased production of refined materials and an increase in scrap generation. If the health of a factory drops too low, it vanishes from the game.
+
+Conversely, choosing high maintenance for a factory involves higher operational expenses, but this setting allows the factory to heal over time. The benefits include an increase in the production of refined products and a reduction in the amount of scrap generated. Essentially, players face a trade-off between cost and sustainability, as the maintenance setting significantly influences the overall performance and longevity of their factories in the game. This dynamic introduces strategic decision-making, as players must weigh the financial aspects against the long-term viability of their operations.
