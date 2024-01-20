@@ -1,19 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class GroundTilemapVisualizer : MonoBehaviour
+public class TilemapVisualizer : MonoBehaviour
 {
-    [SerializeField]
-    private Tilemap floorTilemap;
 
     [SerializeField]
-    private TileBase floorTile;
+    private List<TileBase> resourceTiles;
 
-    public void PaintFloorTiles(IEnumerable<Vector3Int> floorPosition)
+    public void PaintTileType(Tilemap tilemap, IEnumerable<Vector3Int> position, string type)
     {
-        PaintTiles(floorPosition, floorTilemap, floorTile);
+        foreach (var tile in resourceTiles)
+        {
+            if (tile.name == type)
+            {
+                PaintTiles(position, tilemap, tile);
+            }
+        }
+        
     }
 
     private void PaintTiles(IEnumerable<Vector3Int> positions, Tilemap tilemap, TileBase tile)
