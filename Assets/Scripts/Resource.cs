@@ -11,8 +11,6 @@ public class Resource : MonoBehaviour
     [SerializeField]
     float output = 2;
     [SerializeField]
-    string clusterId;
-    [SerializeField]
     Vector3Int position;
 
     public string GetId()
@@ -30,11 +28,6 @@ public class Resource : MonoBehaviour
         return output;
     }
 
-    public string GetClusterId()
-    {
-        return clusterId;
-    }
-
     public Vector3Int GetPosition()
     {
         return position;
@@ -48,5 +41,10 @@ public class Resource : MonoBehaviour
     public void SetType(string type)
     {
         this.type = type;
+    }
+
+    public void SetPosition(Vector3Int position)
+    {
+        this.position = position;
     }
 }

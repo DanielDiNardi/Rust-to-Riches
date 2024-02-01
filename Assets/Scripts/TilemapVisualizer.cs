@@ -38,23 +38,26 @@ public class TilemapVisualizer : MonoBehaviour
         GameObject obj = tilemap.GetInstantiatedObject(tilePosition);
         if (obj.GetComponent<Resource>() != null)
         {
-            PopulateResourceInfo(obj, type);
+            PopulateResourceInfo(obj, type, position);
             Debug.Log(
                 "\n" + 
                 "ID: " + obj.GetComponent<Resource>().GetId() + 
                 "\n" + 
                 "TYPE: " + obj.GetComponent<Resource>().GetType() +
                 "\n" +
-                "OUTPUT: " + obj.GetComponent<Resource>().GetOutput()
+                "OUTPUT: " + obj.GetComponent<Resource>().GetOutput() +
+                "\n" +
+                "POSITION: " + obj.GetComponent<Resource>().GetPosition()
             );
         }
     }
 
-    private void PopulateResourceInfo(GameObject obj, string type)
+    private void PopulateResourceInfo(GameObject obj, string type, Vector3Int position)
     {
         string idString = "res-" + type.ToLower() + "-" + IdManager.GetAndIncreaseResourceId();
 
         obj.GetComponent<Resource>().SetId(idString);
         obj.GetComponent<Resource>().SetType(type);
+        obj.GetComponent<Resource>().SetPosition(position);
     }
 }
