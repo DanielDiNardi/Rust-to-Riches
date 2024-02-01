@@ -15,4 +15,9 @@ public static class GroundPositionManager
     {
         return groundPositions.Contains(position);
     }
+
+    public static HashSet<Vector3Int> GetGroundPositions()
+    {
+        return groundPositions;
+    }
 }

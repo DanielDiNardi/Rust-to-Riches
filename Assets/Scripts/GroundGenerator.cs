@@ -3,9 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.Tilemaps;
 
-public class GroundRandomWalkIterator : MonoBehaviour
+public class GroundGenerator : MonoBehaviour
 {
+    [SerializeField]
+    private List<string> types = new List<string>
+    {
+        "Cube"
+    };
+
     [SerializeField]
     protected Vector3Int startPosition = Vector3Int.zero;
 
@@ -17,30 +24,36 @@ public class GroundRandomWalkIterator : MonoBehaviour
     public bool startRandomlyEachIteration = true;
 
     [SerializeField]
-    private GroundTilemapVisualizer tilemapVisualizer;
+    private Tilemap tilemap;
+    [SerializeField]
+    private TilemapVisualizer tilemapVisualizer;
 
-    public static HashSet<Vector3Int> floorPositions = new HashSet<Vector3Int>();
+    public static HashSet<Vector3Int> groundPositions = new HashSet<Vector3Int>();
 
     public void RunProceduralGeneration()
     {
-        floorPositions = RunRandomWalk();
-        tilemapVisualizer.PaintFloorTiles(floorPositions);
+        foreach (var type in types)
+        {
+            groundPositions = RunRandomWalk();
+            tilemapVisualizer.PaintTileType(tilemap, groundPositions, type);
+        }
+            
     }
 
     protected HashSet<Vector3Int> RunRandomWalk()
     {
         var currentPosition = startPosition;
-        HashSet<Vector3Int> floorPositions = new HashSet<Vector3Int>();
+        HashSet<Vector3Int> groundPositions = new HashSet<Vector3Int>();
         for (int i = 0; i < iterations; i++)
         {
             var path = GroundRandomWalk(currentPosition, walkLength);
-            floorPositions.UnionWith(path);
+            groundPositions.UnionWith(path);
             if (startRandomlyEachIteration)
             {
-                currentPosition = floorPositions.ElementAt(Random.Range(0, floorPositions.Count));
+                currentPosition = groundPositions.ElementAt(Random.Range(0, groundPositions.Count));
             }
         }
-        return floorPositions;
+        return groundPositions;
     }
 
     public static HashSet<Vector3Int> GroundRandomWalk(Vector3Int startPosition, int walkLength)
