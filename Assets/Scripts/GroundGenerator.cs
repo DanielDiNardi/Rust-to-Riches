@@ -10,14 +10,14 @@ public class GroundGenerator : MonoBehaviour
     [SerializeField]
     private List<string> types = new List<string>
     {
-        "Cube"
+        "Ground"
     };
 
     [SerializeField]
     protected Vector3Int startPosition = Vector3Int.zero;
 
     [SerializeField]
-    private int iterations = 10;
+    private int iterations = 100;
     [SerializeField]
     public int walkLength = 10;
     [SerializeField]

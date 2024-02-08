@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   types:
-  - Cube
+  - Ground
   startPosition: {x: 0, y: 0, z: 0}
   iterations: 100
   walkLength: 10
@@ -1287,7 +1287,7 @@ MonoBehaviour:
   - Stone
   - Tree
   startPosition: {x: 0, y: 0, z: 0}
-  iterations: 1
+  iterations: 5
   walkLength: 1
   startRandomlyEachIteration: 1
   tilemap: {fileID: 2090754758}
@@ -1759,11 +1759,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceTiles:
-  - {fileID: 11400000, guid: ba90722db4016014f9c2f9b8b235a883, type: 2}
+  - {fileID: 11400000, guid: b1973a9a3ddc7bc4b8bd4cf9acc69cd4, type: 2}
   - {fileID: 11400000, guid: f184d37073bf7a541a1d483c12170e92, type: 2}
   - {fileID: 11400000, guid: 00124f850b0e3d341be9220d97069bfa, type: 2}
   - {fileID: 11400000, guid: f147a7c084051094aaff3abe286e60a0, type: 2}
   - {fileID: 11400000, guid: 2922cd9c2cb2f88488473a97effc0dda, type: 2}
+  - {fileID: 11400000, guid: ba90722db4016014f9c2f9b8b235a883, type: 2}
 --- !u!1 &2090754757
 GameObject:
   m_ObjectHideFlags: 0
