@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
-  m_Name: Capsule
+  m_Name: Iron
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: 0}
-  m_DefaultGameObject: {fileID: 6907149518740936485, guid: 5c087d31641d1de47ae44aed4e8f28be, type: 3}
+  m_DefaultGameObject: {fileID: 919132149155446097, guid: 53647a51a9f2f5e41a30f0cd322369d0, type: 3}
   m_DefaultColliderType: 1
   m_TilingRules: []

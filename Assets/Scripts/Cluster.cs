@@ -19,7 +19,7 @@ public class Cluster : MonoBehaviour
     public void PopulateClusterInfo()
     {
         string idString = "clu-" + IdManager.GetAndIncreaseClusterId();
-
         gameObject.GetComponent<Cluster>().SetId(idString);
+        gameObject.name = id;
     }
 }

@@ -38,7 +38,9 @@ public class TilemapVisualizer : MonoBehaviour
         GameObject obj = tilemap.GetInstantiatedObject(tilePosition);
         if (obj.GetComponent<Resource>() != null)
         {
-            obj.GetComponent<Resource>().PopulateResourceInfo(type, position, "clu-" + IdManager.GetClusterID());
+            string clusterId = "clu-" + IdManager.GetClusterID();
+            obj.GetComponent<Resource>().PopulateResourceInfo(type, position, clusterId);
+            GameObject.Find(clusterId).GetComponent<Cluster>().AddResource(obj.GetComponent<Resource>().GetId());
             Debug.Log(
                 "\n" + 
                 "ID: " + obj.GetComponent<Resource>().GetId() + 

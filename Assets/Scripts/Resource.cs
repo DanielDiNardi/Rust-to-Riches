@@ -68,6 +68,6 @@ public class Resource : MonoBehaviour
         gameObject.GetComponent<Resource>().SetType(type);
         gameObject.GetComponent<Resource>().SetPosition(position);
         gameObject.GetComponent<Resource>().SetClusterId(clusterId);
-
+        gameObject.name = id;
     }
 }

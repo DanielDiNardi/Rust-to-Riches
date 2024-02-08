@@ -10,18 +10,19 @@ public class ResourceGenerator : MonoBehaviour
     [SerializeField]
     private List<string> types = new List<string>
     {
-        "Sphere",
-        "Capsule",
-        "Cylinder"
+        "Copper",
+        "Iron",
+        "Stone",
+        "Tree"
     };
 
     [SerializeField]
     protected Vector3Int startPosition = Vector3Int.zero;
 
     [SerializeField]
-    private int iterations = 10;
+    private int iterations = 1;
     [SerializeField]
-    public int walkLength = 10;
+    public int walkLength = 1;
     [SerializeField]
     public bool startRandomlyEachIteration = true;
 
@@ -96,6 +97,7 @@ public class ResourceGenerator : MonoBehaviour
         var previousPosition = startPosition;
 
         GameObject obj = new GameObject();
+        obj.transform.parent = GameObject.Find("Surface").transform;
         obj.AddComponent<Cluster>();
         obj.GetComponent<Cluster>().PopulateClusterInfo();
 
