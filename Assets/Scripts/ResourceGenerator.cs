@@ -29,7 +29,6 @@ public class ResourceGenerator : MonoBehaviour
     private Tilemap tilemap;
     [SerializeField]
     private TilemapVisualizer tilemapVisualizer;
-
     [SerializeField]
     private HashSet<Vector3Int> resourcePositions = new HashSet<Vector3Int>();
 
@@ -64,8 +63,7 @@ public class ResourceGenerator : MonoBehaviour
             {
                 var path = ResourceRandomWalk(
                     currentPosition,
-                    walkLength,
-                    availableSurfacePositions
+                    walkLength
                 );
                 resourcePositions.UnionWith(path);
 
@@ -88,8 +86,7 @@ public class ResourceGenerator : MonoBehaviour
 
     public static HashSet<Vector3Int> ResourceRandomWalk(
         Vector3Int startPosition,
-        int walkLength,
-        HashSet<Vector3Int> availableSurfacePositions
+        int walkLength
     )
     {
         HashSet<Vector3Int> path = new HashSet<Vector3Int>();
@@ -97,6 +94,10 @@ public class ResourceGenerator : MonoBehaviour
 
         SurfacePositionManager.AddPosition(startPosition);
         var previousPosition = startPosition;
+
+        GameObject obj = new GameObject();
+        obj.AddComponent<Cluster>();
+        obj.GetComponent<Cluster>().PopulateClusterInfo();
 
         for (int i = 0; i < walkLength; i++)
         {

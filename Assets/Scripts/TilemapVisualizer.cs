@@ -38,7 +38,7 @@ public class TilemapVisualizer : MonoBehaviour
         GameObject obj = tilemap.GetInstantiatedObject(tilePosition);
         if (obj.GetComponent<Resource>() != null)
         {
-            PopulateResourceInfo(obj, type, position);
+            obj.GetComponent<Resource>().PopulateResourceInfo(type, position, "clu-" + IdManager.GetClusterID());
             Debug.Log(
                 "\n" + 
                 "ID: " + obj.GetComponent<Resource>().GetId() + 
@@ -47,17 +47,10 @@ public class TilemapVisualizer : MonoBehaviour
                 "\n" +
                 "OUTPUT: " + obj.GetComponent<Resource>().GetOutput() +
                 "\n" +
-                "POSITION: " + obj.GetComponent<Resource>().GetPosition()
+                "POSITION: " + obj.GetComponent<Resource>().GetPosition() +
+                "\n" +
+                "CLUSTERID: " + obj.GetComponent<Resource>().GetClusterId()
             );
         }
-    }
-
-    private void PopulateResourceInfo(GameObject obj, string type, Vector3Int position)
-    {
-        string idString = "res-" + type.ToLower() + "-" + IdManager.GetAndIncreaseResourceId();
-
-        obj.GetComponent<Resource>().SetId(idString);
-        obj.GetComponent<Resource>().SetType(type);
-        obj.GetComponent<Resource>().SetPosition(position);
     }
 }
