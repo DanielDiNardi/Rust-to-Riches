@@ -22,7 +22,7 @@ public class ResourceGenerator : MonoBehaviour
     [SerializeField]
     private int iterations = 1;
     [SerializeField]
-    public int walkLength = 1;
+    private int walkLength = 5;
     [SerializeField]
     public bool startRandomlyEachIteration = true;
 
@@ -37,15 +37,23 @@ public class ResourceGenerator : MonoBehaviour
     {
         foreach (var type in types)
         {
-            resourcePositions = RunRandomWalk();
-            if (resourcePositions.Count > 0)
+            int numOfClusterTypes = Random.Range(2, 5);
+
+            for (int i = 0; i < numOfClusterTypes; i++)
             {
-                tilemapVisualizer.PaintTileType(tilemap, resourcePositions, type);
+                resourcePositions = RunRandomWalk();
+                if (resourcePositions.Count > 0)
+                {
+                    tilemapVisualizer.PaintTileType(tilemap, resourcePositions, type);
+                }
+                else
+                {
+                    Debug.Log("No more available positions");
+
+                
+                }
             }
-            else
-            {
-                Debug.Log("No more available positions");
-            }
+            
         }
     }
 

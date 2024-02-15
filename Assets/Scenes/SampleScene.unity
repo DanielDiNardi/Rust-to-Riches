@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -216,7 +216,7 @@ MonoBehaviour:
   types:
   - Ground
   startPosition: {x: 0, y: 0, z: 0}
-  iterations: 100
+  iterations: 500
   walkLength: 10
   startRandomlyEachIteration: 1
   tilemap: {fileID: 865672473}
@@ -1287,8 +1287,8 @@ MonoBehaviour:
   - Stone
   - Tree
   startPosition: {x: 0, y: 0, z: 0}
-  iterations: 5
-  walkLength: 1
+  iterations: 1
+  walkLength: 5
   startRandomlyEachIteration: 1
   tilemap: {fileID: 2090754758}
   tilemapVisualizer: {fileID: 1954891473}

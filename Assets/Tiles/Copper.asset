@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Copper
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: 0}
-  m_DefaultGameObject: {fileID: 919132149155446097, guid: ea382a1dc0763274b9a6a86337cc4d36, type: 3}
+  m_DefaultGameObject: {fileID: 6790613245978708278, guid: 9b468534d3a5f5a42bbfb55b19c32e54, type: 3}
   m_DefaultColliderType: 1
   m_TilingRules: []
