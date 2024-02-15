@@ -20,8 +20,6 @@ public class ResourceGenerator : MonoBehaviour
     protected Vector3Int startPosition = Vector3Int.zero;
 
     [SerializeField]
-    private int iterations = 1;
-    [SerializeField]
     private int walkLength = 5;
     [SerializeField]
     public bool startRandomlyEachIteration = true;
@@ -37,7 +35,7 @@ public class ResourceGenerator : MonoBehaviour
     {
         foreach (var type in types)
         {
-            int numOfClusterTypes = Random.Range(2, 5);
+            int numOfClusterTypes = Random.Range(2, 7);
 
             for (int i = 0; i < numOfClusterTypes; i++)
             {
@@ -68,8 +66,6 @@ public class ResourceGenerator : MonoBehaviour
 
             HashSet<Vector3Int> resourcePositions = new HashSet<Vector3Int>();
 
-            for (int i = 0; i < iterations; i++)
-            {
                 var path = ResourceRandomWalk(
                     currentPosition,
                     walkLength
@@ -80,11 +76,7 @@ public class ResourceGenerator : MonoBehaviour
                 {
                     currentPosition = resourcePositions.ElementAt(Random.Range(0, resourcePositions.Count));
                 }
-                else
-                {
-                    break;
-                }
-            }
+
             return resourcePositions;
         }
         else

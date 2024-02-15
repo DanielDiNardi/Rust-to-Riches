@@ -50,6 +50,11 @@ public class Resource : MonoBehaviour
         this.type = type;
     }
 
+    public void SetOutput(float newOutput)
+    {
+        this.output = newOutput;
+    }
+
     public void SetPosition(Vector3Int position)
     {
         this.position = position;
