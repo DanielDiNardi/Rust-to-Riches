@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using UnityEngine.Tilemaps;
+using Unity.VisualScripting;
 
 public class ResourceGenerator : MonoBehaviour
 {
@@ -14,24 +15,19 @@ public class ResourceGenerator : MonoBehaviour
         "Capsule",
         "Cylinder"
     };
-
-    [SerializeField]
-    protected Vector3Int startPosition = Vector3Int.zero;
-
-    [SerializeField]
-    private int iterations = 10;
-    [SerializeField]
-    public int walkLength = 10;
-    [SerializeField]
-    public bool startRandomlyEachIteration = true;
-
     [SerializeField]
     private Tilemap tilemap;
     [SerializeField]
     private TilemapVisualizer tilemapVisualizer;
-
     [SerializeField]
     private HashSet<Vector3Int> resourcePositions = new HashSet<Vector3Int>();
+    [SerializeField]
+    private int iterations = 10;
+    [SerializeField]
+    protected Vector3Int startPosition = Vector3Int.zero;
+    public int walkLength = 10;
+    public bool startRandomlyEachIteration = true;
+    public HashSet<Vector3Int> ResourcePositions { get => resourcePositions; }
 
     public void RunProceduralGeneration()
     {
@@ -53,37 +49,28 @@ public class ResourceGenerator : MonoBehaviour
     {
         var availableSurfacePositions = AvailablePositionsManager.GetAvailablePositions();
 
-        if (availableSurfacePositions.Count > 0)
+        if (availableSurfacePositions.Count <= 0) return new HashSet<Vector3Int>();
+
+        startPosition = availableSurfacePositions.ElementAt(Random.Range(0, availableSurfacePositions.Count));
+        var currentPosition = startPosition;
+
+        HashSet<Vector3Int> resourcePositions = new HashSet<Vector3Int>();
+
+        for (int i = 0; i < iterations; i++)
         {
-            startPosition = availableSurfacePositions.ElementAt(Random.Range(0, availableSurfacePositions.Count));
-            var currentPosition = startPosition;
+            var path = ResourceRandomWalk(
+                currentPosition,
+                walkLength,
+                availableSurfacePositions
+            );
 
-            HashSet<Vector3Int> resourcePositions = new HashSet<Vector3Int>();
+            resourcePositions.UnionWith(path);
 
-            for (int i = 0; i < iterations; i++)
-            {
-                var path = ResourceRandomWalk(
-                    currentPosition,
-                    walkLength,
-                    availableSurfacePositions
-                );
-                resourcePositions.UnionWith(path);
+            if (startRandomlyEachIteration && path.Count == 0) break;
 
-                if (startRandomlyEachIteration && path.Count != 0)
-                {
-                    currentPosition = resourcePositions.ElementAt(Random.Range(0, resourcePositions.Count));
-                }
-                else
-                {
-                    break;
-                }
-            }
-            return resourcePositions;
+            currentPosition = resourcePositions.ElementAt(Random.Range(0, resourcePositions.Count));
         }
-        else
-        {
-            return new HashSet<Vector3Int>();
-        }
+        return resourcePositions;
     }
 
     public static HashSet<Vector3Int> ResourceRandomWalk(
