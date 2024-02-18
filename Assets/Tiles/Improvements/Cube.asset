@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Cube
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: 0}
-  m_DefaultGameObject: {fileID: 0}
+  m_DefaultGameObject: {fileID: 792616022104183983, guid: 6361e6a707c6340a5aedf0eb62504fa6, type: 3}
   m_DefaultColliderType: 1
   m_TilingRules: []
