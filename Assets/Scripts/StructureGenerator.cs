@@ -14,21 +14,19 @@ public class StructureGenerator : MonoBehaviour
     };
 
     [SerializeField]
-    protected Vector3Int startPosition = Vector3Int.zero;
-
-    [SerializeField]
-    public int walkLength = 1;
-
-    [SerializeField]
-    public bool startRandomlyEachIteration = true;
-
-    [SerializeField]
     private Tilemap tilemap;
     [SerializeField]
     private TilemapVisualizer tilemapVisualizer;
 
     [SerializeField]
     private HashSet<Vector3Int> resourcePositions = new HashSet<Vector3Int>();
+
+    [SerializeField]
+    protected Vector3Int startPosition = Vector3Int.zero;
+
+    public int walkLength = 1;
+
+    public bool startRandomlyEachIteration = true;
 
     public void RunProceduralGeneration()
     {
@@ -55,12 +53,10 @@ public class StructureGenerator : MonoBehaviour
             startPosition = availableSurfacePositions.ElementAt(Random.Range(0, availableSurfacePositions.Count));
 
             HashSet<Vector3Int> structurePositions = new HashSet<Vector3Int> { startPosition };
-            
+
             return structurePositions;
         }
-        else
-        {
-            return new HashSet<Vector3Int>();
-        }
+
+        return new HashSet<Vector3Int>();
     }
 }
