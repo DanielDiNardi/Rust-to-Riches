@@ -38,11 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-<<<<<<< HEAD
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
-=======
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
->>>>>>> 42fba7811bb2322ef0a7a9d2b5337f57da1ef178
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -533,6 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e361090bbf31478b994b82004ef832d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedImprovementType: 0
 --- !u!4 &382452188
 Transform:
   m_ObjectHideFlags: 0
@@ -1441,26 +1438,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   types:
-<<<<<<< HEAD
   - Copper
   - Iron
   - Stone
   - Tree
   startPosition: {x: 0, y: 0, z: 0}
-  iterations: 1
   walkLength: 5
   startRandomlyEachIteration: 1
-=======
-  - Sphere
-  - Capsule
-  - Cylinder
->>>>>>> 42fba7811bb2322ef0a7a9d2b5337f57da1ef178
   tilemap: {fileID: 2090754758}
   tilemapVisualizer: {fileID: 1954891473}
-  iterations: 1
-  startPosition: {x: 0, y: 0, z: 0}
-  walkLength: 5
-  startRandomlyEachIteration: 1
 --- !u!1 &1348019127
 GameObject:
   m_ObjectHideFlags: 0

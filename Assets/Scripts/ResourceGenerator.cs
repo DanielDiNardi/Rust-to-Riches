@@ -16,7 +16,6 @@ public class ResourceGenerator : MonoBehaviour
         "Stone",
         "Tree"
     };
-<<<<<<< HEAD
 
     [SerializeField]
     protected Vector3Int startPosition = Vector3Int.zero;
@@ -26,21 +25,12 @@ public class ResourceGenerator : MonoBehaviour
     [SerializeField]
     public bool startRandomlyEachIteration = true;
 
-=======
->>>>>>> 42fba7811bb2322ef0a7a9d2b5337f57da1ef178
     [SerializeField]
     private Tilemap tilemap;
     [SerializeField]
     private TilemapVisualizer tilemapVisualizer;
     [SerializeField]
     private HashSet<Vector3Int> resourcePositions = new HashSet<Vector3Int>();
-    [SerializeField]
-    private int iterations = 10;
-    [SerializeField]
-    protected Vector3Int startPosition = Vector3Int.zero;
-    public int walkLength = 10;
-    public bool startRandomlyEachIteration = true;
-    public HashSet<Vector3Int> ResourcePositions { get => resourcePositions; }
 
     public void RunProceduralGeneration()
     {
@@ -77,39 +67,22 @@ public class ResourceGenerator : MonoBehaviour
 
         HashSet<Vector3Int> resourcePositions = new HashSet<Vector3Int>();
 
-        for (int i = 0; i < iterations; i++)
+        
+        var path = ResourceRandomWalk(
+            currentPosition,
+            walkLength
+        );
+        resourcePositions.UnionWith(path);
+
+        if (startRandomlyEachIteration && path.Count != 0)
         {
-            var path = ResourceRandomWalk(
-                currentPosition,
-                walkLength,
-                availableSurfacePositions
-            );
-
-            resourcePositions.UnionWith(path);
-
-<<<<<<< HEAD
-                var path = ResourceRandomWalk(
-                    currentPosition,
-                    walkLength
-                );
-                resourcePositions.UnionWith(path);
-
-                if (startRandomlyEachIteration && path.Count != 0)
-                {
-                    currentPosition = resourcePositions.ElementAt(Random.Range(0, resourcePositions.Count));
-                }
-
-            return resourcePositions;
+            currentPosition = resourcePositions.ElementAt(Random.Range(0, resourcePositions.Count));
         }
         else
         {
-            return new HashSet<Vector3Int>();
-=======
-            if (startRandomlyEachIteration && path.Count == 0) break;
-
-            currentPosition = resourcePositions.ElementAt(Random.Range(0, resourcePositions.Count));
->>>>>>> 42fba7811bb2322ef0a7a9d2b5337f57da1ef178
+            return new HashSet<Vector3Int>();  
         }
+
         return resourcePositions;
     }
 
