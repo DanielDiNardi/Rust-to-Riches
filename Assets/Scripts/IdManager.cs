@@ -8,6 +8,8 @@ public static class IdManager
     private static int resourceIdCount = 0;
     [SerializeField]
     private static int clusterIdCount = 0;
+    [SerializeField]
+    private static int improvementIdCount = 0;
 
     public static int GetAndIncreaseResourceId()
     {
@@ -19,6 +21,12 @@ public static class IdManager
     {
         clusterIdCount++;
         return clusterIdCount;
+    }
+
+    public static int GetAndIncreaseImprovementId()
+    {
+        improvementIdCount++;
+        return improvementIdCount;
     }
 
     public static int GetClusterID()

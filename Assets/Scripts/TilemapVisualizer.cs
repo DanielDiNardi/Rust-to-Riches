@@ -15,6 +15,7 @@ public class TilemapVisualizer : MonoBehaviour
     {
         foreach (var tile in resourceTiles)
         {
+            Debug.Log(tile);
             if (tile.name == type)
             {
                 PaintTiles(position, tilemap, tile, type);

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -30,6 +31,7 @@ public class TileSelector : MonoBehaviour
         var tilePosition = tilemap.WorldToCell(positionToPlace);
         var tile = tiles[playerControls.selectedImprovementType];
         tilemap.SetTile(tilePosition, tile);
+        tile.GetComponent<Improvement>().PopulateImprovementInfo(tilePosition);
     }
 
     private void HandleMouseClick()
