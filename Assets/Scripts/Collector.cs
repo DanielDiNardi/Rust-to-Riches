@@ -99,7 +99,7 @@ public class Collector : MonoBehaviour
 
     public void PopulateCollectorInfo(Vector3Int position)
     {
-        string idString = "col-" + type.ToLower() + "-" + IdManager.GetAndIncreaseResourceId();
+        string idString = "col-" + type.ToLower() + "-" + IdManager.GetAndIncreaseCollectorId();
 
         gameObject.GetComponent<Collector>().SetId(idString);
         //gameObject.GetComponent<Collector>().SetType(type);

@@ -27,7 +27,7 @@ public class HarvestResources : MonoBehaviour
 
         foreach (var neighbourPosition in neighbourPositions)
         {
-            Vector3Int currentNeighbourPosition = gridPosition + neighbourPosition;
+            Vector3Int currentNeighbourPosition = neighbourPosition + new Vector3Int(gridPosition.x, gridPosition.z, gridPosition.y);
 
             Debug.Log(currentNeighbourPosition);
             Debug.Log(tilemap.HasTile(currentNeighbourPosition));
