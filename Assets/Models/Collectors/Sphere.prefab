@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4626745166755935746}
   - component: {fileID: 1905943958418185210}
   - component: {fileID: -2530396079197362423}
-  - component: {fileID: -5389004948133067974}
+  - component: {fileID: -2111204000272146736}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Improvement
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 0}
---- !u!114 &-5389004948133067974
+--- !u!114 &-2111204000272146736
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,10 +129,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1206937048447923223}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99c4fed74592d486bb9d4963296de062, type: 3}
+  m_Script: {fileID: 11500000, guid: 848373718f9d9534ab5c2ed7e9061363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 
-  type: 
-  position: {x: 0, y: 0, z: 0}
   clusterId: 
+  inventory: 0
+  output: 0
+  position: {x: 0, y: 0, z: 0}
+  type: 

@@ -7,7 +7,7 @@ public class Collector : MonoBehaviour
     [SerializeField]
     string id;
     [SerializeField]
-    string clusterId;
+    List<string> clusterId = new List<string>();
     [SerializeField]
     HashSet<string> truckIds = new HashSet<string>();
     [SerializeField]
@@ -24,7 +24,7 @@ public class Collector : MonoBehaviour
         return id;
     }
 
-    public string GetClusterId()
+    public List<string> GetClusterId()
     {
         return clusterId;
     }
@@ -61,7 +61,7 @@ public class Collector : MonoBehaviour
 
     public void SetClusterId(string clusterId)
     {
-        this.clusterId = clusterId;
+        this.clusterId.Add(clusterId);
     }
 
     public void AddTruckId()
@@ -97,14 +97,14 @@ public class Collector : MonoBehaviour
         this.type = type;
     }
 
-    public void PopulateCollectorInfo(string type, Vector3Int position, string clusterId)
+    public void PopulateCollectorInfo(Vector3Int position)
     {
-        string idString = "res-" + type.ToLower() + "-" + IdManager.GetAndIncreaseResourceId();
+        string idString = "col-" + type.ToLower() + "-" + IdManager.GetAndIncreaseResourceId();
 
         gameObject.GetComponent<Collector>().SetId(idString);
-        gameObject.GetComponent<Collector>().SetType(type);
+        //gameObject.GetComponent<Collector>().SetType(type);
         gameObject.GetComponent<Collector>().SetPosition(position);
-        gameObject.GetComponent<Collector>().SetClusterId(clusterId);
+        //gameObject.GetComponent<Collector>().SetClusterId(clusterId);
         gameObject.name = id;
     }
 }

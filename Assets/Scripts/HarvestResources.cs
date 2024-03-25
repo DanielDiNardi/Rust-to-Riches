@@ -29,6 +29,9 @@ public class HarvestResources : MonoBehaviour
         {
             Vector3Int currentNeighbourPosition = gridPosition + neighbourPosition;
 
+            Debug.Log(currentNeighbourPosition);
+            Debug.Log(tilemap.HasTile(currentNeighbourPosition));
+
             if (tilemap.HasTile(currentNeighbourPosition))
             {
                 var neighbour = tilemap.GetTile(currentNeighbourPosition);
@@ -42,7 +45,8 @@ public class HarvestResources : MonoBehaviour
 
     void Start()
     {
-        GetTileNeighbours(gameObject.GetComponent<Improvement>().GetPosition());
+        tilemap = GameObject.Find("Surface").GetComponent<Tilemap>();
+        GetTileNeighbours(gameObject.GetComponent<Collector>().GetPosition());
     }
 
     void Update()

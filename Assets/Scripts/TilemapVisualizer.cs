@@ -15,7 +15,7 @@ public class TilemapVisualizer : MonoBehaviour
     {
         foreach (var tile in resourceTiles)
         {
-            Debug.Log(tile);
+            //Debug.Log(tile);
             if (tile.name == type)
             {
                 PaintTiles(position, tilemap, tile, type);
@@ -42,18 +42,18 @@ public class TilemapVisualizer : MonoBehaviour
             string clusterId = "clu-" + IdManager.GetClusterID();
             obj.GetComponent<Resource>().PopulateResourceInfo(type, position, clusterId);
             GameObject.Find(clusterId).GetComponent<Cluster>().AddResource(obj.GetComponent<Resource>().GetId());
-            Debug.Log(
-                "\n" + 
-                "ID: " + obj.GetComponent<Resource>().GetId() + 
-                "\n" + 
-                "TYPE: " + obj.GetComponent<Resource>().GetType() +
-                "\n" +
-                "OUTPUT: " + obj.GetComponent<Resource>().GetOutput() +
-                "\n" +
-                "POSITION: " + obj.GetComponent<Resource>().GetPosition() +
-                "\n" +
-                "CLUSTERID: " + obj.GetComponent<Resource>().GetClusterId()
-            );
+            //Debug.Log(
+            //    "\n" +
+            //    "ID: " + obj.GetComponent<Resource>().GetId() +
+            //    "\n" +
+            //    "TYPE: " + obj.GetComponent<Resource>().GetType() +
+            //    "\n" +
+            //    "OUTPUT: " + obj.GetComponent<Resource>().GetOutput() +
+            //    "\n" +
+            //    "POSITION: " + obj.GetComponent<Resource>().GetPosition() +
+            //    "\n" +
+            //    "CLUSTERID: " + obj.GetComponent<Resource>().GetClusterId()
+            //);
         }
     }
 }

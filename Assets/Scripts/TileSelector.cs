@@ -25,13 +25,13 @@ public class TileSelector : MonoBehaviour
     private void PlaceImprovement()
     {
         SelectedTile.hasImprovement = true;
-        Debug.Log("Placing improvement");
+        //Debug.Log("Placing improvement");
         Vector3 positionToPlace = SelectedTile.transform.position + new Vector3(0, SelectedTile.transform.localScale.y, 0);
 
         var tilePosition = tilemap.WorldToCell(positionToPlace);
         var tile = tiles[playerControls.selectedImprovementType];
         tilemap.SetTile(tilePosition, tile);
-        tile.GetComponent<Improvement>().PopulateImprovementInfo(tilePosition);
+        tilemap.GetInstantiatedObject(tilePosition).GetComponent<Collector>().PopulateCollectorInfo(tilePosition);
     }
 
     private void HandleMouseClick()
