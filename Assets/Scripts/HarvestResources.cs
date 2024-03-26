@@ -19,24 +19,21 @@ public class HarvestResources : MonoBehaviour
 
     public Tilemap tilemap;
 
-    public List<TileBase> GetTileNeighbours(Vector3Int position)
+    public List<GameObject> GetTileNeighbours(Vector3Int position)
     {
-        List<TileBase> tileNeighbours = new List<TileBase>();
+        List<GameObject> tileNeighbours = new List<GameObject>();
 
-        Vector3Int gridPosition = tilemap.WorldToCell(position);
+        Vector3Int gridPosition = tilemap.WorldToCell(new Vector3(position.x, position.y, position.z));
 
         foreach (var neighbourPosition in neighbourPositions)
         {
             Vector3Int currentNeighbourPosition = neighbourPosition + new Vector3Int(gridPosition.x, gridPosition.z, gridPosition.y);
 
-            Debug.Log(currentNeighbourPosition);
-            Debug.Log(tilemap.HasTile(currentNeighbourPosition));
-
-            if (tilemap.HasTile(currentNeighbourPosition))
+            var neighbour = tilemap.GetInstantiatedObject(currentNeighbourPosition);
+            Debug.Log(neighbour);
+            if(neighbour != null)
             {
-                var neighbour = tilemap.GetTile(currentNeighbourPosition);
                 tileNeighbours.Add(neighbour);
-                Debug.Log("Neighbour: " +  neighbour);
             }
         }
 
@@ -46,7 +43,10 @@ public class HarvestResources : MonoBehaviour
     void Start()
     {
         tilemap = GameObject.Find("Surface").GetComponent<Tilemap>();
-        GetTileNeighbours(gameObject.GetComponent<Collector>().GetPosition());
+        foreach(var neighbour in GetTileNeighbours(gameObject.GetComponent<Collector>().GetPosition()))
+        {
+            Debug.Log(neighbour);
+        }
     }
 
     void Update()
